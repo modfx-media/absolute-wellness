@@ -57,6 +57,232 @@ export type BlogPost = {
 
 export const POSTS: BlogPost[] = [
   {
+    slug: "ozempic-alternatives-for-eugene-athletes-and-lifters",
+    title: "Ozempic Alternatives for Eugene Athletes and Lifters",
+    description:
+      "Explore safe training, protein, and recovery strategies with an Ozempic alternative in Eugene, OR to preserve muscle and avoid overtraining on GLP-1s.",
+    category: "Weight Loss",
+    tags: [
+      "GLP-1",
+      "Ozempic Alternative",
+      "Medical Weight Loss",
+      "Eugene, OR",
+      "Strength Training",
+      "Athletes",
+    ],
+    author: "Absolute Wellness Center",
+    authorRole: "Care Team",
+    publishedAt: "2026-08-25",
+    readMinutes: 8,
+    cover: "/images/blogs-images/ozempic-alternatives-for-eugene-athletes-and-lifters.avif",
+    coverAlt:
+      "Active adult in Eugene, OR strength training while using an Ozempic alternative to preserve muscle and performance.",
+    excerpt:
+      "GLP-1 medications can make it harder to eat enough protein and preserve muscle. Here is how active adults in Eugene can pair an Ozempic alternative with smart protein targets, strength training, and fueling to stay strong and fast.",
+    featured: true,
+    relatedSlugs: [
+      "stay-active-outdoors-with-glp-1-support-in-eugene",
+      "glp-1-clinic-follow-up-and-safety-questions-in-eugene",
+      "semaglutide-weight-loss-myths-and-facts-in-eugene",
+    ],
+    content: [
+      {
+        type: "heading",
+        level: 2,
+        text: "Stronger, Leaner, and Still Fast on GLP-1s",
+      },
+      {
+        type: "paragraph",
+        text: "GLP-1 medications like Ozempic are becoming common for weight loss and blood sugar support. Many active adults in Eugene use them while still running, riding, lifting, or hiking. These medications slow stomach emptying and help control appetite, which can make it easier to eat less.",
+      },
+      {
+        type: "paragraph",
+        text: "That same effect can also make it harder to eat enough protein and total calories. When weight comes off quickly, it is easy to lose muscle, power, and recovery capacity if training and nutrition stay the same. Workouts can feel flat, injuries can pop up, and performance can stall at the exact time your body weight is dropping.",
+      },
+      {
+        type: "paragraph",
+        text: "Our focus here is twofold. First, we will look at how a smart Ozempic alternative in Eugene, OR, can fit an active lifestyle. Second, we will talk through performance-focused strategies like protein targets, strength work, fueling plans, and avoiding RED-S and overtraining for runners, cyclists, gym athletes, and outdoor enthusiasts.",
+      },
+
+      {
+        type: "heading",
+        level: 2,
+        text: "Smart Ozempic Alternatives in Eugene, OR for Active Adults",
+      },
+      {
+        type: "paragraph",
+        text: "Not everyone needs the same medication or dose. At our clinic in Eugene, we look at your full health picture before deciding if a GLP-1 is right for you or if a different path may fit better. Some people do well on a GLP-1. Others may respond better to another prescription option, peptide therapy, or a more comprehensive medical weight loss plan.",
+      },
+      {
+        type: "paragraph",
+        text: "When we consider an Ozempic alternative in Eugene, OR for active adults, we look at things like:",
+      },
+      {
+        type: "list",
+        items: [
+          "Current activity level and training goals",
+          "Past medical history and current medications",
+          "Lab work, including markers related to hormones and metabolism",
+          "Body composition, not just the number on the scale",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "The goal is not only fat loss. It is preserving lean muscle, supporting hormones, and keeping energy steady enough that you can keep training. With medical supervision and lab-based monitoring, we can adjust medications, dosing, and timing so your performance does not drop off as your body changes.",
+      },
+      {
+        type: "paragraph",
+        text: "Seasonal timing matters too. Late summer and early fall are big months in our area for races, events, and long days outside. When possible, we like to introduce new medications slowly, match dosage changes with your training calendar, and avoid sudden shifts before key events. That way, you can work on body composition without feeling like your legs disappeared halfway through race season.",
+      },
+
+      {
+        type: "heading",
+        level: 2,
+        text: "Protein Targets to Protect Muscle and Power",
+      },
+      {
+        type: "paragraph",
+        text: "When appetite is lower, protein is often the first thing to slip. That is a problem if you are trying to keep your legs strong for hills or your upper body solid for strength work. Protein is the raw material your body uses to repair and maintain muscle.",
+      },
+      {
+        type: "paragraph",
+        text: "A simple way to set protein goals is to start with your goal body weight. Many active adults do well aiming for roughly that number in grams of protein per day, then adjusting from there with a healthcare provider. Spreading that over the day makes it more manageable, for example:",
+      },
+      {
+        type: "list",
+        items: [
+          "Aim for 25 to 40 grams of protein in 3 to 4 meals or snacks",
+          "Include protein at breakfast instead of waiting until later in the day",
+          "Add a protein source to every plate, not just dinner",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "On GLP-1s, you may feel full quickly or not hungry at normal meal times. To hit protein goals anyway, some people find it helpful to:",
+      },
+      {
+        type: "list",
+        items: [
+          "Use liquid or semi-liquid protein options that are easier to get down slowly",
+          "Choose easy-to-digest foods right after workouts when appetite is usually a bit better",
+          "Set gentle reminders for meals or snacks rather than waiting to feel hungry",
+          "Keep simple, ready-to-eat protein sources on hand",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "At Absolute Wellness Center, we can help tailor protein targets based on age, current lean mass, training load, and lab markers. The aim is to minimize loss of strength, speed, and daily function as the scale moves, so you feel lighter but not weaker.",
+      },
+
+      {
+        type: "heading",
+        level: 2,
+        text: "Strength Training That Supports Speed, Endurance, and Joints",
+      },
+      {
+        type: "paragraph",
+        text: "Cardio alone does not fully protect your muscles during weight loss. When you are on GLP-1s or another Ozempic alternative in Eugene, OR, adding structured strength work can send a clear signal to your body to keep muscle.",
+      },
+      {
+        type: "paragraph",
+        text: "Two to three strength sessions per week are often enough for many active adults. The focus is on:",
+      },
+      {
+        type: "list",
+        items: [
+          "Compound lifts that work multiple joints at once",
+          "Power moves that keep you explosive, within your comfort and skill level",
+          "Joint-friendly patterns that respect past injuries or current aches",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "If you are a runner, cyclist, or court-sport athlete, heavy strength phases can clash with race or game weeks. In late summer and fall, we often help people adjust to:",
+      },
+      {
+        type: "list",
+        items: [
+          "Slightly lighter weights but steady strength frequency during peak race weeks",
+          "Short, focused lifting sessions that support, rather than compete with, key workouts",
+          "Movement patterns that balance out the repetitive stress of your main sport",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Absolute Wellness Center also offers chiropractic care, joint injections, and corrective exercise. When weight is coming off and biomechanics are shifting, this type of support can help keep your joints happy, improve movement patterns, and support consistent training instead of needing to stop and start due to pain.",
+      },
+
+      {
+        type: "heading",
+        level: 2,
+        text: "Fueling Strategies to Avoid RED-S and Overtraining",
+      },
+      {
+        type: "paragraph",
+        text: "RED-S, or Relative Energy Deficiency in Sport, happens when your body does not get enough fuel to match your training load. It is not only about being underweight. It is about a long-term gap between calories in and calories out. On a GLP-1 or an Ozempic alternative in Eugene, OR, appetite suppression can make that gap sneak up on you.",
+      },
+      {
+        type: "paragraph",
+        text: "Signs of under-fueling can include:",
+      },
+      {
+        type: "list",
+        items: [
+          "Ongoing fatigue, even with easy workouts",
+          "More frequent injuries or nagging pains",
+          "Slower recovery, sore for several days after normal sessions",
+          "Mood changes, low motivation, and disturbed sleep",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "To lower that risk, many active adults do best with simple fueling rules around workouts:",
+      },
+      {
+        type: "list",
+        items: [
+          "Include a small amount of easy-to-digest carbohydrate before key sessions",
+          "Have a snack with some protein and carbs within about an hour after hard work",
+          "Sip fluids often, especially in hot Eugene summers, and include electrolytes during longer outdoor efforts",
+          "Do not skip fueling on easy days, since recovery still needs energy",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "If you notice your performance dropping, your mood changing, or your injuries stacking up, that is a signal to check whether your intake matches your output. At our clinic, we can use labs, body composition analysis, and a review of your training and nutrition plan to look for RED-S patterns, then adjust both fueling and activity to help your body catch up.",
+      },
+
+      {
+        type: "heading",
+        level: 2,
+        text: "Building a Performance-First Weight Loss Plan in Eugene",
+      },
+      {
+        type: "paragraph",
+        text: "Weight loss can support performance, but only if it respects muscle, energy, and long-term joint health. We encourage active adults to think of weight loss as a performance project, not just a race to a lower number on the scale. That means choosing medications and strategies that fit your training style, your schedule, and your goals.",
+      },
+      {
+        type: "paragraph",
+        text: "At Absolute Wellness Center, we work with people who want to stay strong, move well, and feel good while changing their body composition. Late summer is a natural time to reset habits as you head into fall races, ski prep, and the busy holiday season. With thoughtful planning around medications, protein intake, strength training, and fueling, it is possible to get leaner while still feeling fast, powerful, and ready for whatever the trails, roads, or gym bring next.",
+      },
+
+      {
+        type: "heading",
+        level: 2,
+        text: "Take The Next Step Toward Sustainable Weight Loss",
+      },
+      {
+        type: "callout",
+        title: "Ready when you are",
+        text: "If you are looking for a personalized, medically supervised option, our team at Absolute Wellness Center is here to help you explore an effective Ozempic alternative in Eugene, OR. We take time to understand your health history, goals, and lifestyle so we can build a plan that fits you, not the other way around. Reach out today to ask questions, schedule a consultation, or discuss your options through our care team.",
+        links: [
+          { label: "Learn about Medical Weight Loss", href: "/medical-weight-loss/" },
+          { label: "Contact Us", href: "/contact/" },
+        ],
+      },
+    ],
+  },
+  {
     slug: "glp-1-clinic-follow-up-and-safety-questions-in-eugene",
     title: "GLP-1 Clinic Follow-Up and Safety Questions in Eugene",
     description:
