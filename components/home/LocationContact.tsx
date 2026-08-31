@@ -119,7 +119,7 @@ export default function LocationContact() {
                     icon: Icons.pin("h-5 w-5"),
                     label: "Address",
                     value: "2286 Oakmont Way, Eugene, OR 97401",
-                    href: "https://goo.gl/maps/ntB3jp7GHC18xwkQ8",
+                    href: "https://www.google.com/maps/place/Absolute+Wellness+Center+%7C+Car+Accident+Injury+Care/@44.0674053,-123.078739,1066m/data=!3m1!1e3!4m6!3m5!1s0x54c11e43d57f03a5:0x8521ca537ea0eee8!8m2!3d44.0673801!4d-123.0760989!16s%2Fg%2F1tkqz_bd!5m1!1e1?entry=tts",
                     external: true,
                   },
                   {
@@ -213,7 +213,7 @@ export default function LocationContact() {
                   Request Appointment →
                 </Link>
                 <a
-                  href="https://goo.gl/maps/ntB3jp7GHC18xwkQ8"
+                  href="https://www.google.com/maps/place/Absolute+Wellness+Center+%7C+Car+Accident+Injury+Care/@44.0674053,-123.078739,1066m/data=!3m1!1e3!4m6!3m5!1s0x54c11e43d57f03a5:0x8521ca537ea0eee8!8m2!3d44.0673801!4d-123.0760989!16s%2Fg%2F1tkqz_bd!5m1!1e1?entry=tts"
                   target="_blank"
                   rel="noreferrer noopener"
                   className="inline-flex flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-full border-2 border-white/20 px-4 py-3 font-[family-name:var(--font-raleway)] text-sm font-bold text-white transition-all hover:bg-white hover:text-gray-900 sm:text-base"

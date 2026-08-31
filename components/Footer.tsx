@@ -191,7 +191,7 @@ export default function Footer() {
               <p className="text-gray-400">
                 <span className="font-semibold" style={{ color: BRAND }}>Address:</span>{" "}
                 <a
-                  href="https://goo.gl/maps/ntB3jp7GHC18xwkQ8"
+                  href="https://www.google.com/maps/place/Absolute+Wellness+Center+%7C+Car+Accident+Injury+Care/@44.0674053,-123.078739,1066m/data=!3m1!1e3!4m6!3m5!1s0x54c11e43d57f03a5:0x8521ca537ea0eee8!8m2!3d44.0673801!4d-123.0760989!16s%2Fg%2F1tkqz_bd!5m1!1e1?entry=tts"
                   target="_blank"
                   rel="noreferrer noopener"
                   className="hover:text-white"
@@ -242,7 +242,7 @@ export default function Footer() {
               </svg>
             </a>
             <a
-              href="https://goo.gl/maps/ntB3jp7GHC18xwkQ8"
+              href="https://www.google.com/maps/place/Absolute+Wellness+Center+%7C+Car+Accident+Injury+Care/@44.0674053,-123.078739,1066m/data=!3m1!1e3!4m6!3m5!1s0x54c11e43d57f03a5:0x8521ca537ea0eee8!8m2!3d44.0673801!4d-123.0760989!16s%2Fg%2F1tkqz_bd!5m1!1e1?entry=tts"
               target="_blank"
               rel="noreferrer noopener"
               aria-label="Google Maps"

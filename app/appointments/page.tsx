@@ -14,7 +14,8 @@ const TITLE = "Appointments in Eugene, OR | Absolute Wellness Center";
 const DESCRIPTION =
   "Schedule an appointment at Absolute Wellness Center in Eugene, OR. Request online or call (541) 484-5777. Same-week appointments available.";
 const URL = "https://awceugene.com/appointments/";
-const MAP_HREF = "https://goo.gl/maps/ntB3jp7GHC18xwkQ8";
+const MAP_HREF =
+  "https://www.google.com/maps/place/Absolute+Wellness+Center+%7C+Car+Accident+Injury+Care/@44.0674053,-123.078739,1066m/data=!3m1!1e3!4m6!3m5!1s0x54c11e43d57f03a5:0x8521ca537ea0eee8!8m2!3d44.0673801!4d-123.0760989!16s%2Fg%2F1tkqz_bd!5m1!1e1?entry=tts";
 const MAP_EMBED =
   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2866.773763373674!2d-123.0786738238013!3d44.06738007108552!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54c11e43d57f03a5%3A0x8521ca537ea0eee8!2sAbsolute%20Wellness%20Center!5e0!3m2!1sen!2sba!4v1691417245166!5m2!1sen!2sba";
 

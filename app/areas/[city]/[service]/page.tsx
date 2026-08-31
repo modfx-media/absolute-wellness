@@ -188,7 +188,7 @@ export default async function CityServicePage({ params }: { params: Params }) {
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#5a6a30]">Visit Us</p>
                 <p className="mt-2 text-sm font-semibold text-gray-900">{ORIGIN.street}</p>
                 <p className="text-sm text-gray-700">{ORIGIN.city}, {ORIGIN.state} {ORIGIN.zip}</p>
-                <a href="https://goo.gl/maps/ntB3jp7GHC18xwkQ8" target="_blank" rel="noreferrer noopener" className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-[#5a6a30] hover:underline">
+                <a href="https://www.google.com/maps/place/Absolute+Wellness+Center+%7C+Car+Accident+Injury+Care/@44.0674053,-123.078739,1066m/data=!3m1!1e3!4m6!3m5!1s0x54c11e43d57f03a5:0x8521ca537ea0eee8!8m2!3d44.0673801!4d-123.0760989!16s%2Fg%2F1tkqz_bd!5m1!1e1?entry=tts" target="_blank" rel="noreferrer noopener" className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-[#5a6a30] hover:underline">
                   Get directions →
                 </a>
               </div>
