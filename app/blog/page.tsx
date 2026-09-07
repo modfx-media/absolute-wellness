@@ -4,13 +4,11 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/home/Reveal";
 import { Icons, SectionPill } from "@/components/home/ui";
+import { type BlogPost, formatDate } from "@/lib/blog";
+import { coverAbsoluteUrl, getPublishedSitePosts } from "@/lib/ranked/to-site-post";
 import { buildPageGraph, SITE_URL } from "@/lib/site-schema";
-import {
-  formatDate,
-  getAllPosts,
-  getCategories,
-  getFeaturedPost,
-} from "@/lib/blog";
+
+export const revalidate = 3600;
 
 const BRAND = "#7E9146";
 
@@ -54,8 +52,7 @@ const pageSchema = buildPageGraph({
   ],
 });
 
-function blogSchema() {
-  const posts = getAllPosts();
+function blogSchema(posts: BlogPost[]) {
   return {
     "@context": "https://schema.org",
     "@type": "Blog",
@@ -72,15 +69,17 @@ function blogSchema() {
       datePublished: p.publishedAt,
       dateModified: p.updatedAt ?? p.publishedAt,
       author: { "@type": "Organization", name: p.author },
-      image: `${SITE_URL}${p.cover}`,
+      image: coverAbsoluteUrl(p.cover, SITE_URL),
     })),
   };
 }
 
-export default function BlogIndexPage() {
-  const posts = getAllPosts();
-  const featured = getFeaturedPost();
-  const categories = getCategories();
+export default async function BlogIndexPage() {
+  const posts = [...(await getPublishedSitePosts())].sort((a, b) =>
+    b.publishedAt.localeCompare(a.publishedAt),
+  );
+  const featured = posts[0];
+  const categories = Array.from(new Set(posts.map((p) => p.category)));
   const remaining = featured ? posts.filter((p) => p.slug !== featured.slug) : posts;
 
   return (
@@ -91,7 +90,7 @@ export default function BlogIndexPage() {
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema()) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema(posts)) }}
       />
 
       <PageHero

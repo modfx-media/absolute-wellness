@@ -1614,8 +1614,8 @@ export function getFeaturedPost(): BlogPost | undefined {
   return getAllPosts()[0];
 }
 
-export function getRelatedPosts(post: BlogPost, limit = 3): BlogPost[] {
-  const all = getAllPosts().filter((p) => p.slug !== post.slug);
+export function getRelatedPosts(post: BlogPost, limit = 3, pool?: BlogPost[]): BlogPost[] {
+  const all = (pool ?? getAllPosts()).filter((p) => p.slug !== post.slug);
   if (post.relatedSlugs?.length) {
     const explicit = post.relatedSlugs
       .map((s) => all.find((p) => p.slug === s))

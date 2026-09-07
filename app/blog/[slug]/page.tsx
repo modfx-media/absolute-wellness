@@ -6,24 +6,22 @@ import Reveal from "@/components/home/Reveal";
 import { DotPattern } from "@/components/home/decor";
 import { Icons } from "@/components/home/ui";
 import { SITE_URL, buildPageGraph } from "@/lib/site-schema";
-import {
-  type BlogBlock,
-  type BlogPost,
-  formatDate,
-  getAllPosts,
-  getPost,
-  getRelatedPosts,
-} from "@/lib/blog";
+import { type BlogBlock, type BlogPost, formatDate, getRelatedPosts } from "@/lib/blog";
+import { linkifyRichText } from "@/lib/linkify-rich-text";
+import { getPublishedBlogSlugs } from "@/lib/ranked/posts";
+import { coverAbsoluteUrl, getPublishedSitePost, getPublishedSitePosts } from "@/lib/ranked/to-site-post";
 
 const BRAND = "#7E9146";
 const SITE = "https://awceugene.com";
 
 type Params = Promise<{ slug: string }>;
 
-export const dynamicParams = false;
+export const revalidate = 3600;
+export const dynamicParams = true;
 
-export function generateStaticParams() {
-  return getAllPosts().map((p) => ({ slug: p.slug }));
+export async function generateStaticParams() {
+  const slugs = await getPublishedBlogSlugs().catch(() => []);
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -32,11 +30,11 @@ export async function generateMetadata({
   params: Params;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = getPost(slug);
+  const post = await getPublishedSitePost(slug);
   if (!post) return {};
 
   const url = `${SITE}/blog/${post.slug}/`;
-  const image = `${SITE}${post.cover}`;
+  const image = coverAbsoluteUrl(post.cover, SITE);
 
   return {
     title: `${post.title} | Absolute Wellness Center`,
@@ -108,7 +106,7 @@ function BlockRenderer({ block }: { block: BlogBlock }) {
     case "paragraph":
       return (
         <p className="mt-6 text-[1.05rem] leading-8 text-gray-700 first:mt-0">
-          {block.text}
+          {linkifyRichText(block.text)}
         </p>
       );
 
@@ -121,7 +119,7 @@ function BlockRenderer({ block }: { block: BlogBlock }) {
                 key={i}
                 className="relative pl-2 [counter-increment:item] before:absolute before:-left-6 before:top-0 before:font-bold before:text-[#7E9146] before:content-[counter(item)_'.']"
               >
-                {it}
+                {linkifyRichText(it)}
               </li>
             ))}
           </ol>
@@ -136,7 +134,7 @@ function BlockRenderer({ block }: { block: BlogBlock }) {
                 className="mt-3 inline-block h-1.5 w-1.5 flex-none rounded-full"
                 style={{ backgroundColor: BRAND }}
               />
-              <span>{it}</span>
+              <span>{linkifyRichText(it)}</span>
             </li>
           ))}
         </ul>
@@ -188,7 +186,7 @@ function BlockRenderer({ block }: { block: BlogBlock }) {
             </p>
           )}
           <p className={`${block.title ? "mt-2" : ""} text-[1.02rem] leading-8 text-gray-700`}>
-            {block.text}
+            {linkifyRichText(block.text)}
           </p>
           {block.links && block.links.length > 0 && (
             <div className="mt-5 flex flex-wrap gap-3">
@@ -238,7 +236,7 @@ function articleSchema(post: BlogPost) {
     url,
     datePublished: post.publishedAt,
     dateModified: post.updatedAt ?? post.publishedAt,
-    image: [`${SITE}${post.cover}`],
+    image: [coverAbsoluteUrl(post.cover, SITE)],
     author: {
       "@type": "Organization",
       name: post.author,
@@ -253,11 +251,12 @@ function articleSchema(post: BlogPost) {
 
 export default async function BlogPostPage({ params }: { params: Params }) {
   const { slug } = await params;
-  const post = getPost(slug);
+  const post = await getPublishedSitePost(slug);
   if (!post) notFound();
 
   const url = `${SITE}/blog/${post.slug}/`;
-  const related = getRelatedPosts(post, 3);
+  const published = await getPublishedSitePosts();
+  const related = getRelatedPosts(post, 3, published);
   const headings = post.content
     .filter((b): b is Extract<BlogBlock, { type: "heading" }> => b.type === "heading" && b.level === 2)
     .map((h) => ({ id: h.id ?? slugify(h.text), text: h.text }));

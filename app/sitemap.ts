@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { CITIES, SERVICES } from "@/lib/areas";
-import { getAllPosts } from "@/lib/blog";
+import { getPublishedSitePosts } from "@/lib/ranked/to-site-post";
 
 const ROUTES = [
   "/",
@@ -50,9 +50,10 @@ const PRIMARY_PAGES = new Set([
   "/medical-weight-loss/",
 ]);
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = "https://awceugene.com";
   const now = new Date();
+  const publishedPosts = await getPublishedSitePosts().catch(() => []);
 
   const core = ROUTES.map((path) => ({
     url: `${base}${path}`,
@@ -77,7 +78,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  const blogPosts = getAllPosts().map((p) => ({
+  const blogPosts = publishedPosts.map((p) => ({
     url: `${base}/blog/${p.slug}/`,
     lastModified: p.updatedAt ? new Date(p.updatedAt) : new Date(p.publishedAt),
     changeFrequency: "monthly" as const,
