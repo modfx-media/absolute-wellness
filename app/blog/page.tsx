@@ -74,13 +74,27 @@ function blogSchema(posts: BlogPost[]) {
   };
 }
 
-export default async function BlogIndexPage() {
+export default async function BlogIndexPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ category?: string | string[] }>;
+}) {
+  const { category: categoryParam } = await searchParams;
+  const rawCategory = Array.isArray(categoryParam) ? categoryParam[0] : categoryParam;
+
   const posts = [...(await getPublishedSitePosts())].sort((a, b) =>
     b.publishedAt.localeCompare(a.publishedAt),
   );
-  const featured = posts[0];
   const categories = Array.from(new Set(posts.map((p) => p.category)));
-  const remaining = featured ? posts.filter((p) => p.slug !== featured.slug) : posts;
+  const selectedCategory = categories.find((c) => c === rawCategory);
+
+  const filteredPosts = selectedCategory
+    ? posts.filter((p) => p.category === selectedCategory)
+    : posts;
+  const featured = selectedCategory ? undefined : filteredPosts[0];
+  const remaining = featured
+    ? filteredPosts.filter((p) => p.slug !== featured.slug)
+    : filteredPosts;
 
   return (
     <>
@@ -127,16 +141,28 @@ export default async function BlogIndexPage() {
 
           {categories.length > 0 && (
             <Reveal delay={0.12} className="mt-8 flex flex-wrap gap-2">
-              <span className="inline-flex items-center rounded-full bg-[#f0f4e8] px-3 py-1 text-xs font-semibold text-[#5a6a30]">
+              <Link
+                href="/blog/"
+                className={
+                  !selectedCategory
+                    ? "inline-flex items-center rounded-full bg-[#f0f4e8] px-3 py-1 text-xs font-semibold text-[#5a6a30]"
+                    : "inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-semibold text-gray-700 transition-colors hover:border-[#7E9146]/40 hover:text-[#5a6a30]"
+                }
+              >
                 All Topics
-              </span>
+              </Link>
               {categories.map((c) => (
-                <span
+                <Link
                   key={c}
-                  className="inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-semibold text-gray-700"
+                  href={`/blog/?category=${encodeURIComponent(c)}`}
+                  className={
+                    selectedCategory === c
+                      ? "inline-flex items-center rounded-full bg-[#f0f4e8] px-3 py-1 text-xs font-semibold text-[#5a6a30]"
+                      : "inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-semibold text-gray-700 transition-colors hover:border-[#7E9146]/40 hover:text-[#5a6a30]"
+                  }
                 >
                   {c}
-                </span>
+                </Link>
               ))}
             </Reveal>
           )}
@@ -208,13 +234,23 @@ export default async function BlogIndexPage() {
       )}
 
       {/* Grid of remaining posts */}
-      {remaining.length > 0 && (
+      {remaining.length > 0 ? (
         <section className="relative bg-white py-20 sm:py-24">
           <div className="mx-auto max-w-7xl px-6">
             <Reveal>
-              <h2 className="font-[family-name:var(--font-raleway)] text-3xl font-black tracking-tight text-gray-900 sm:text-4xl">
-                More Articles
-              </h2>
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <h2 className="font-[family-name:var(--font-raleway)] text-3xl font-black tracking-tight text-gray-900 sm:text-4xl">
+                  {selectedCategory ? `${selectedCategory} Articles` : "More Articles"}
+                </h2>
+                {selectedCategory && (
+                  <Link
+                    href="/blog/"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#7E9146] hover:text-[#5a6a30]"
+                  >
+                    Clear filter
+                  </Link>
+                )}
+              </div>
             </Reveal>
 
             <ul className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -265,6 +301,17 @@ export default async function BlogIndexPage() {
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
+      ) : (
+        <section className="relative bg-white py-20 sm:py-24">
+          <div className="mx-auto max-w-7xl px-6 text-center">
+            <p className="text-base text-gray-600">
+              No articles found in this category yet.{" "}
+              <Link href="/blog/" className="font-semibold text-[#7E9146] underline underline-offset-2 hover:text-[#5a6a30]">
+                View all articles
+              </Link>
+            </p>
           </div>
         </section>
       )}
