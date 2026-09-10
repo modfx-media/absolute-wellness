@@ -10,6 +10,9 @@ import {
 
 const RANKED_BASE = 'https://app.ranked.ai/api/v1'
 
+/** Site-wide kill switch: Ranked CMS integration is disabled. Flip to re-enable. */
+const RANKED_INTEGRATION_ENABLED = false
+
 function rankedConfig() {
   return {
     apiKey: process.env.RANKED_API_KEY,
@@ -18,11 +21,13 @@ function rankedConfig() {
 }
 
 export function isRankedConfigured(): boolean {
+  if (!RANKED_INTEGRATION_ENABLED) return false
   const { apiKey, projectId } = rankedConfig()
   return Boolean(apiKey && projectId)
 }
 
 export function hasRankedApiKey(): boolean {
+  if (!RANKED_INTEGRATION_ENABLED) return false
   return Boolean(rankedConfig().apiKey)
 }
 

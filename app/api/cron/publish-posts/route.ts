@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server'
-import { syncAllRankedSites } from '@/lib/ranked/sync'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -17,6 +16,6 @@ function isAuthorized(request: Request): boolean {
 
 export async function GET(request: Request) {
   if (!isAuthorized(request)) return unauthorized()
-  const result = await syncAllRankedSites()
-  return NextResponse.json({ ok: true, ranAt: new Date().toISOString(), ...result })
+  // Ranked CMS integration is disabled; skip the sync entirely.
+  return NextResponse.json({ ok: true, disabled: true, ranAt: new Date().toISOString() })
 }
