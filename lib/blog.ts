@@ -57,6 +57,268 @@ export type BlogPost = {
 
 export const POSTS: BlogPost[] = [
   {
+    slug: "when-to-recheck-semaglutide-injections-in-eugene",
+    title: "When to Recheck Semaglutide Injections in Eugene",
+    description:
+      "Learn common red flags that mean semaglutide injections in Eugene may need a recheck, plus what to expect at a follow up at a wellness clinic",
+    category: "Weight Loss",
+    tags: [
+      "Semaglutide",
+      "GLP-1",
+      "Medical Weight Loss",
+      "Eugene, OR",
+      "Follow-Up Care",
+    ],
+    author: "Absolute Wellness Center",
+    authorRole: "Care Team",
+    publishedAt: "2026-09-15",
+    readMinutes: 8,
+    cover: "/images/blogs-images/when-to-recheck-semaglutide-injections-in-eugene.png",
+    coverAlt:
+      "Woman sitting on a couch with a semaglutide injection pen nearby, surrounded by icons of nausea, digestive issues, low appetite, weight change, headache, poor sleep, skin changes, mood shifts, and hormone symptoms.",
+    excerpt:
+      "Semaglutide has become a common tool for medical weight loss. It works by helping control appetite and blood sugar so it is easier to eat less and feel satisfied. For many people, it can be a helpful part of a fuller plan that includes food, movement, and support.",
+    featured: true,
+    relatedSlugs: [
+      "semaglutide-injection-tips-for-eugene-patients",
+      "signs-you-may-benefit-from-semaglutide-weight-loss",
+      "semaglutide-weight-loss-myths-and-facts-in-eugene",
+    ],
+    content: [
+      {
+        type: "heading",
+        level: 2,
+        text: "When Your Weight Loss Shots Need a Second Look",
+      },
+      {
+        type: "paragraph",
+        text: "Semaglutide has become a common tool for medical weight loss. It works by helping control appetite and blood sugar so it is easier to eat less and feel satisfied. For many people, it can be a helpful part of a fuller plan that includes food, movement, and support.",
+      },
+      {
+        type: "paragraph",
+        text: "Even when semaglutide is prescribed correctly, it is not a \u201Cset it and forget it\u201D shot. Bodies change over time, schedules shift, and health needs can change too. That is why anyone using semaglutide injections in Eugene should know when it might be time for a recheck or dose review, especially as daily routines shift with cooler weather and busier schedules.",
+      },
+      {
+        type: "paragraph",
+        text: "At Absolute Wellness Center, we combine medical weight loss with other wellness services to keep a close eye on how treatment is working. When something seems off, we want to catch it early so we can adjust, support, or change course in a safe and thoughtful way.",
+      },
+
+      {
+        type: "heading",
+        level: 2,
+        text: "Red Flag Side Effects You Should Not Ignore",
+      },
+      {
+        type: "paragraph",
+        text: "Mild side effects are common when starting semaglutide. Some people notice:",
+      },
+      {
+        type: "list",
+        items: [
+          "Mild nausea",
+          "Feeling full faster than before",
+          "Slight changes in bowel habits",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "These often settle down as the body gets used to the medicine. But some symptoms are red flags and should never be brushed off.",
+      },
+      {
+        type: "paragraph",
+        text: "Watch for:",
+      },
+      {
+        type: "list",
+        items: [
+          "Persistent or severe nausea or vomiting that makes it hard to eat or drink",
+          "Abdominal pain that is strong, steady, or gets worse over time",
+          "Pain that wakes you up at night or keeps you from doing normal tasks",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Certain symptoms could suggest pancreatitis and need prompt medical care, such as:",
+      },
+      {
+        type: "list",
+        items: [
+          "Sharp pain in the upper belly, especially in the center or left side",
+          "Pain that spreads through to the back",
+          "Fever or chills with belly pain",
+          "Ongoing vomiting that does not ease up",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Possible gallbladder issues can show up as:",
+      },
+      {
+        type: "list",
+        items: [
+          "Right upper belly pain, often after eating greasy or heavy foods",
+          "Yellowing of the skin or eyes",
+          "Very dark urine",
+          "Pale or clay-colored stools",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "When routines change, many people try to push through discomfort to keep life moving. With these warning signs, pushing through is not a good idea. At Absolute Wellness Center, we take these symptoms seriously. Depending on what we find, we may slow your dose increases, pause your injections, adjust your plan, or recommend that you seek urgent or emergency care if needed.",
+      },
+
+      {
+        type: "heading",
+        level: 2,
+        text: "When Your Progress Plateaus or Reverses",
+      },
+      {
+        type: "paragraph",
+        text: "Weight loss with semaglutide often starts faster, then settles into a slower, steady pattern. Short plateaus are common, especially as your body adjusts and as activity levels or eating habits change. A week or two without a change on the scale is not always a problem.",
+      },
+      {
+        type: "paragraph",
+        text: "It may be time for a recheck if you notice:",
+      },
+      {
+        type: "list",
+        items: [
+          "No weight change for 4 to 6 weeks despite taking injections as directed",
+          "Gradual weight regain, even though you are still getting shots",
+          "Hunger and cravings growing stronger, like old habits creeping back",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "These patterns can mean your current dose, schedule, or overall plan is not matching what your body needs now. It does not always mean the medicine has \u201Cstopped working,\u201D but it may mean it needs a tune-up.",
+      },
+      {
+        type: "paragraph",
+        text: "During a medical recheck, we may look at:",
+      },
+      {
+        type: "list",
+        items: [
+          "Whether your current dose is right for your body and side effect level",
+          "Stress levels and sleep habits that can slow progress",
+          "Hormone shifts that can affect appetite and weight",
+          "Joint pain or stiffness that makes it harder to move as cooler, wetter weather sets in",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "At Absolute Wellness Center, we can combine medical weight loss support with chiropractic care, IV therapy, and other wellness tools. That way, we are not only looking at the scale but also at your comfort, mobility, and energy.",
+      },
+
+      {
+        type: "heading",
+        level: 2,
+        text: "Mood, Energy, and Hormone Changes to Watch",
+      },
+      {
+        type: "paragraph",
+        text: "Weight loss is not just a \u201Cbody\u201D thing. It can affect mood, energy, and hormones too. Semaglutide may change how you experience hunger, fullness, and daily routine, and that can sometimes spill over into how you feel emotionally.",
+      },
+      {
+        type: "paragraph",
+        text: "Pay attention if you notice:",
+      },
+      {
+        type: "list",
+        items: [
+          "New or worsening depression or sadness",
+          "Increased anxiety, nervousness, or irritability",
+          "Feeling on edge, snappy, or unlike yourself",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Energy changes can also be a sign something needs a closer look, such as:",
+      },
+      {
+        type: "list",
+        items: [
+          "Extreme fatigue that rest does not fix",
+          "Brain fog, trouble focusing, or feeling \u201Cspacey\u201D",
+          "Feeling wired at night but exhausted during the day",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "For people with menstrual cycles, shifting hormones may show up as:",
+      },
+      {
+        type: "list",
+        items: [
+          "Irregular periods",
+          "Stronger PMS symptoms",
+          "Hot flashes, night sweats, or mood swings",
+          "Lower libido than usual",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "These issues do not always mean semaglutide is the direct cause. They may point to thyroid issues, hormone changes, stress, or other health concerns. At Absolute Wellness Center, we can evaluate these factors together and see whether semaglutide should be adjusted, paired with hormone support, or managed alongside regenerative and wellness care so your whole system is supported, not just your weight.",
+      },
+
+      {
+        type: "heading",
+        level: 2,
+        text: "Safety Checks Before Your Next Seasonal Dose Change",
+      },
+      {
+        type: "paragraph",
+        text: "As seasons change in Eugene, people often move less, spend more time indoors, and face different food choices and routines. That slow shift is a good time to pause and look at whether your current semaglutide plan still fits your daily life.",
+      },
+      {
+        type: "paragraph",
+        text: "Helpful safety checks to review with your provider include:",
+      },
+      {
+        type: "list",
+        items: [
+          "A full list of your current medications and supplements, so we can watch for possible interactions",
+          "Bloodwork, when appropriate, to keep an eye on kidney, liver, and metabolic health",
+          "Your injection technique, including how you draw up or use the pen, where you inject, and how often you rotate sites",
+          "How and where you are storing your medication",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "These details can affect how well your semaglutide injections in Eugene are working and how your body tolerates them. At Absolute Wellness Center, we also ask about joint pain, old injuries, and mobility limits that may get worse with colder, damp weather. If your knees, hips, or back hurt, keeping up with activity can be hard, and that can slow progress. Our team can address these issues so you can stay as active and comfortable as possible.",
+      },
+
+      {
+        type: "heading",
+        level: 2,
+        text: "Take Control of Your Semaglutide Journey Today",
+      },
+      {
+        type: "paragraph",
+        text: "Semaglutide can be a powerful tool, but it works best with careful, ongoing support. Warning signs that deserve a prompt recheck include severe or persistent side effects, stalled or reversed progress that lasts more than a few weeks, and concerning changes in mood, energy, or hormones. Paying attention to these signals early can help protect your long-term health and keep your plan safe and steady.",
+      },
+      {
+        type: "paragraph",
+        text: "At Absolute Wellness Center in Eugene, we bring medical weight loss, chiropractic care, IV therapy, hormone support, and other wellness services together under one roof. Our focus is on your whole health, not just the number on the scale, so your treatment can grow and change with you over time.",
+      },
+
+      {
+        type: "heading",
+        level: 2,
+        text: "Take The Next Step Toward Sustainable Weight Loss",
+      },
+      {
+        type: "callout",
+        title: "Ready when you are",
+        text: "If you are ready for a medically guided plan that fits your life, we invite you to explore how our semaglutide injections in Eugene can support your health goals. At Absolute Wellness Center, we take time to understand your history, answer questions, and create a personalized strategy for long-term success. Schedule a visit or ask a question anytime through our contact page so we can help you get started with a safe, effective approach to weight loss.",
+        links: [
+          { label: "Learn about Medical Weight Loss", href: "/medical-weight-loss/" },
+          { label: "Contact Us", href: "/contact/" },
+        ],
+      },
+    ],
+  },
+  {
     slug: "semaglutide-injection-tips-for-eugene-patients",
     title: "Semaglutide Injection Tips for Eugene Patients",
     description:
