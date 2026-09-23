@@ -13,7 +13,15 @@ const SERVICES_PREVIEW = [
   { label: "IV Therapy", value: "Restorative", icon: Icons.drip("h-4 w-4") },
 ];
 
-export default function Hero() {
+export default function Hero({
+  rating = 0,
+  reviewCount = 0,
+  reviewsUrl = "https://www.google.com/maps",
+}: {
+  rating?: number;
+  reviewCount?: number;
+  reviewsUrl?: string;
+}) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -293,11 +301,24 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.55 }}
             className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-base text-gray-300"
           >
-            <span className="inline-flex items-center gap-2">
+            <a
+              href={reviewsUrl}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="inline-flex items-center gap-2 transition-colors hover:text-white"
+            >
               <span className="text-yellow-400">★★★★★</span>
-              <span className="font-semibold text-white">4.3</span>
-              <span className="text-gray-400">· 98 Google reviews</span>
-            </span>
+              {rating > 0 ? (
+                <span className="font-semibold text-white">{rating.toFixed(1)}</span>
+              ) : null}
+              {reviewCount > 0 ? (
+                <span className="text-gray-400">
+                  · {reviewCount.toLocaleString("en-US")} Google reviews
+                </span>
+              ) : (
+                <span className="text-gray-400">Google reviews</span>
+              )}
+            </a>
             <span className="hidden h-4 w-px bg-white/20 sm:inline-block" />
             <span className="inline-flex items-center gap-2">
               <span

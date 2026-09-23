@@ -38,7 +38,15 @@ function useLiveStatus() {
   return { open, label, todayIdx: dow };
 }
 
-export default function LocationContact() {
+export default function LocationContact({
+  rating = 0,
+  reviewCount = 0,
+  reviewsUrl = "https://www.google.com/maps",
+}: {
+  rating?: number;
+  reviewCount?: number;
+  reviewsUrl?: string;
+}) {
   const reduce = useReducedMotion();
   const { open, label, todayIdx } = useLiveStatus();
 
@@ -304,12 +312,23 @@ export default function LocationContact() {
                       </p>
                     </div>
                   </div>
-                  <div className="mt-3 flex items-center gap-2 text-[11px]">
-                    <span className="inline-flex items-center gap-1 rounded-full bg-[#f7f9f2] px-2 py-0.5 font-semibold text-[#5a6a30]">
-                      ★ 4.3
+                  <a
+                    href={reviewsUrl}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="mt-3 flex items-center gap-2 text-[11px] hover:underline"
+                  >
+                    {rating > 0 ? (
+                      <span className="inline-flex items-center gap-1 rounded-full bg-[#f7f9f2] px-2 py-0.5 font-semibold text-[#5a6a30]">
+                        ★ {rating.toFixed(1)}
+                      </span>
+                    ) : null}
+                    <span className="text-gray-500">
+                      {reviewCount > 0
+                        ? `${reviewCount.toLocaleString("en-US")} Google reviews`
+                        : "Google reviews"}
                     </span>
-                    <span className="text-gray-500">98 Google reviews</span>
-                  </div>
+                  </a>
                 </motion.div>
 
                 {/* Bottom-right floating drive-time badge */}

@@ -1,3 +1,5 @@
+import { googleReviewsMeta } from "@/lib/reviews";
+
 export default function StructuredData() {
   const data = {
     "@context": "https://schema.org",
@@ -29,8 +31,9 @@ export default function StructuredData() {
     ],
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: "4.3",
-      reviewCount: "98",
+      ratingValue: String(googleReviewsMeta.rating),
+      reviewCount: String(googleReviewsMeta.reviewCount),
+      bestRating: "5",
     },
   };
 

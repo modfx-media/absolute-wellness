@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import Reveal from "@/components/home/Reveal";
 import { Icons } from "@/components/home/ui";
+import { getDisplayedGoogleReviews } from "@/lib/google-reviews";
 
 const BRAND = "#7E9146";
 
@@ -368,7 +369,12 @@ export function TreatmentApproach({
 /* ─────────────────────────────────────────────────────────────
    ENHANCEMENT — Shared "Why Choose AWC" band (white bg, 4 features)
    ───────────────────────────────────────────────────────────── */
-export function WhyAWC({ condition }: { condition: string }) {
+export async function WhyAWC({ condition }: { condition: string }) {
+  const { meta } = await getDisplayedGoogleReviews();
+  const reviewCopy =
+    meta.rating > 0 && meta.reviewCount > 0
+      ? `${meta.rating.toFixed(1)} stars across ${meta.reviewCount}+ Google reviews.`
+      : "Read our Google reviews before you book.";
   const features = [
     {
       title: "Integrated Medical + Chiropractic",
@@ -387,7 +393,7 @@ export function WhyAWC({ condition }: { condition: string }) {
     },
     {
       title: "9+ Years Serving Eugene",
-      body: "Trusted by thousands of local patients — 4.3 stars across 98+ Google reviews.",
+      body: `Trusted by thousands of local patients — ${reviewCopy}`,
       icon: Icons.star("h-5 w-5"),
     },
   ];

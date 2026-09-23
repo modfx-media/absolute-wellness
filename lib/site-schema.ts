@@ -1,6 +1,8 @@
 // Shared schema fragments that mirror the live awceugene.com JSON-LD graph.
 // Every subpage embeds WebPage + BreadcrumbList + this WebSite + LocalBusiness.
 
+import { isFiveStarReview, type GoogleReview } from "./reviews";
+
 export const SITE_URL = "https://awceugene.com";
 
 export const websiteSchema = {
@@ -62,11 +64,6 @@ export const medicalBusinessSchema = {
     },
   ],
   sameAs: ["https://www.facebook.com/AbsoluteWellnessCenter"],
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.3",
-    reviewCount: "98",
-  },
   medicalSpecialty: [
     "Chiropractic",
     "PhysicalTherapy",
@@ -104,6 +101,29 @@ export function buildServiceSchema(opts: {
   };
 }
 
+export function reviewJsonLd(reviews: GoogleReview[]) {
+  return reviews.filter(isFiveStarReview).map((review) => ({
+    "@type": "Review",
+    author: { "@type": "Person", name: review.name },
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: "5",
+      bestRating: "5",
+    },
+    reviewBody: review.quote,
+  }));
+}
+
+export function aggregateRatingJsonLd(rating: number, reviewCount: number) {
+  if (!(rating > 0) || !(reviewCount > 0)) return undefined;
+  return {
+    "@type": "AggregateRating",
+    ratingValue: String(rating),
+    reviewCount: String(reviewCount),
+    bestRating: "5",
+  };
+}
+
 export function buildPageGraph(opts: {
   url: string;
   name: string;
@@ -111,6 +131,9 @@ export function buildPageGraph(opts: {
   breadcrumb: { name: string; item?: string }[];
   datePublished?: string;
   dateModified?: string;
+  reviews?: GoogleReview[];
+  rating?: number;
+  reviewCount?: number;
 }) {
   const breadcrumbId = `${opts.url}#breadcrumb`;
   return {
@@ -141,7 +164,20 @@ export function buildPageGraph(opts: {
         })),
       },
       websiteSchema,
-      medicalBusinessSchema,
+      {
+        ...medicalBusinessSchema,
+        ...(opts.rating != null && opts.reviewCount != null
+          ? {
+              aggregateRating: aggregateRatingJsonLd(
+                opts.rating,
+                opts.reviewCount,
+              ),
+            }
+          : {}),
+        ...(opts.reviews?.length
+          ? { review: reviewJsonLd(opts.reviews) }
+          : {}),
+      },
     ],
   };
 }

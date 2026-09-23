@@ -11,7 +11,11 @@ import Reveal from "@/components/home/Reveal";
 import ServicesGrid from "@/components/home/ServicesGrid";
 import AnimatedCounter from "@/components/home/AnimatedCounter";
 import { DotPattern, GridPattern, WaveDivider } from "@/components/home/decor";
+import { GoogleReviews } from "@/components/home/GoogleReviews";
+import Testimonials from "@/components/home/Testimonials";
 import { Icons, SectionPill } from "@/components/home/ui";
+import { getDisplayedGoogleReviews } from "@/lib/google-reviews";
+import { isFiveStarReview } from "@/lib/reviews";
 import { medicalBusinessSchema } from "@/lib/site-schema";
 
 const TITLE =
@@ -80,19 +84,65 @@ const pageSchema = {
   ],
 };
 
-export default function HomePage() {
+export default async function HomePage() {
+  const { reviews, meta } = await getDisplayedGoogleReviews();
+  const visible = reviews.filter(isFiveStarReview);
+  const homeSchema = {
+    ...pageSchema,
+    "@graph": pageSchema["@graph"].map((node) =>
+      node === medicalBusinessSchema
+        ? {
+            ...medicalBusinessSchema,
+            ...(meta.rating > 0 && meta.reviewCount > 0
+              ? {
+                  aggregateRating: {
+                    "@type": "AggregateRating",
+                    ratingValue: String(meta.rating),
+                    reviewCount: String(meta.reviewCount),
+                    bestRating: "5",
+                  },
+                }
+              : {}),
+            ...(visible.length
+              ? {
+                  review: visible.map((review) => ({
+                    "@type": "Review",
+                    author: { "@type": "Person", name: review.name },
+                    reviewRating: {
+                      "@type": "Rating",
+                      ratingValue: "5",
+                      bestRating: "5",
+                    },
+                    reviewBody: review.quote,
+                  })),
+                }
+              : {}),
+          }
+        : node,
+    ),
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeSchema) }}
       />
 
       {/* SECTION 1 — Hero */}
-      <Hero />
+      <Hero
+        rating={meta.rating}
+        reviewCount={meta.reviewCount}
+        reviewsUrl={meta.reviewsUrl}
+      />
 
-      {/* Scrolling brand marquee */}
-      <Marquee />
+      {/* Scrolling brand + 5-star Google reviews */}
+      <Marquee
+        reviews={visible.map((review) => ({
+          name: review.name,
+          quote: review.quote,
+        }))}
+      />
 
       {/* SECTION 2 — Dark Trust Band (compact) */}
       <section className="relative overflow-hidden bg-[#0a0a0a] py-14">
@@ -123,11 +173,15 @@ export default function HomePage() {
               <div className="grid grid-cols-3 gap-3 sm:gap-4">
                 {[
                   {
-                    value: 4.3,
+                    value: meta.rating || 0,
                     decimals: 1,
                     suffix: "★",
                     label: "Patient Rating",
-                    sub: "98 Reviews",
+                    sub:
+                      meta.reviewCount > 0
+                        ? `${meta.reviewCount.toLocaleString("en-US")} Reviews`
+                        : "Google Reviews",
+                    href: meta.reviewsUrl,
                   },
                   {
                     value: 9,
@@ -141,29 +195,45 @@ export default function HomePage() {
                     label: "Treatments",
                     sub: "Regenerative care",
                   },
-                ].map((s) => (
-                  <div
-                    key={s.label}
-                    className="group rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-center backdrop-blur transition-colors hover:border-[#7E9146]/40 hover:bg-white/[0.07] sm:p-5"
-                  >
-                    <span
-                      className="block font-[family-name:var(--font-raleway)] text-2xl font-black sm:text-3xl"
-                      style={{ color: BRAND }}
+                ].map((s) => {
+                  const card = (
+                    <>
+                      <span
+                        className="block font-[family-name:var(--font-raleway)] text-2xl font-black sm:text-3xl"
+                        style={{ color: BRAND }}
+                      >
+                        <AnimatedCounter
+                          to={s.value}
+                          decimals={s.decimals ?? 0}
+                          suffix={s.suffix}
+                        />
+                      </span>
+                      <p className="mt-1.5 font-[family-name:var(--font-raleway)] text-[11px] font-bold uppercase tracking-[0.12em] text-white sm:text-xs">
+                        {s.label}
+                      </p>
+                      <p className="mt-0.5 text-[10px] text-gray-500 sm:text-[11px]">
+                        {s.sub}
+                      </p>
+                    </>
+                  );
+                  const className =
+                    "group rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-center backdrop-blur transition-colors hover:border-[#7E9146]/40 hover:bg-white/[0.07] sm:p-5";
+                  return s.href ? (
+                    <a
+                      key={s.label}
+                      href={s.href}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className={`${className} block`}
                     >
-                      <AnimatedCounter
-                        to={s.value}
-                        decimals={s.decimals ?? 0}
-                        suffix={s.suffix}
-                      />
-                    </span>
-                    <p className="mt-1.5 font-[family-name:var(--font-raleway)] text-[11px] font-bold uppercase tracking-[0.12em] text-white sm:text-xs">
-                      {s.label}
-                    </p>
-                    <p className="mt-0.5 text-[10px] text-gray-500 sm:text-[11px]">
-                      {s.sub}
-                    </p>
-                  </div>
-                ))}
+                      {card}
+                    </a>
+                  ) : (
+                    <div key={s.label} className={className}>
+                      {card}
+                    </div>
+                  );
+                })}
               </div>
             </Reveal>
           </div>
@@ -324,8 +394,28 @@ export default function HomePage() {
       {/* SECTION 7 — Conditions We Treat */}
       <Conditions />
 
-      {/* SECTION 7 — Location & Contact */}
-      <LocationContact />
+      <GoogleReviews>
+        {({ reviews: items, meta: reviewMeta }) => (
+          <Testimonials
+            items={items.map((review) => ({
+              name: review.name,
+              quote: review.quote,
+              when: review.relativeTime ?? "Posted on Google",
+            }))}
+            rating={reviewMeta.rating}
+            reviewCount={reviewMeta.reviewCount}
+            reviewsUrl={reviewMeta.reviewsUrl}
+            variant="scroll"
+          />
+        )}
+      </GoogleReviews>
+
+      {/* SECTION 8 — Location & Contact */}
+      <LocationContact
+        rating={meta.rating}
+        reviewCount={meta.reviewCount}
+        reviewsUrl={meta.reviewsUrl}
+      />
     </>
   );
 }

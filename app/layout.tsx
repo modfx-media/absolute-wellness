@@ -5,6 +5,13 @@ import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { getDisplayedGoogleReviews } from "@/lib/google-reviews";
+import { isFiveStarReview } from "@/lib/reviews";
+import {
+  aggregateRatingJsonLd,
+  medicalBusinessSchema,
+  reviewJsonLd,
+} from "@/lib/site-schema";
 
 const raleway = Raleway({
   subsets: ["latin"],
@@ -51,17 +58,31 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { reviews, meta } = await getDisplayedGoogleReviews();
+  const visible = reviews.filter(isFiveStarReview);
+  const reviewSchema = {
+    ...medicalBusinessSchema,
+    ...(aggregateRatingJsonLd(meta.rating, meta.reviewCount)
+      ? { aggregateRating: aggregateRatingJsonLd(meta.rating, meta.reviewCount) }
+      : {}),
+    ...(visible.length ? { review: reviewJsonLd(visible) } : {}),
+  };
+
   return (
     <html
       lang="en"
       className={`${raleway.variable} ${lato.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-white text-[#0a0a0a]">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
+        />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

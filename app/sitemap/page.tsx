@@ -73,6 +73,7 @@ const PAGES: SitemapItem[] = [
   { label: "Pain Relief", href: "/pain-relief/" },
   { label: "Physical Therapy", href: "/physical-therapy/" },
   { label: "Privacy Policy", href: "/privacy-policy/" },
+  { label: "Reviews", href: "/reviews/" },
   { label: "Services", href: "/services/" },
   { label: "Shoulder Pain", href: "/shoulder-pain/" },
   { label: "Sitemap", href: null },

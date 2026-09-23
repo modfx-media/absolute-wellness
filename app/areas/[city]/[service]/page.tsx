@@ -13,6 +13,7 @@ import {
   getRelatedServices,
   nearbyCities,
 } from "@/lib/areas";
+import { getDisplayedGoogleReviews } from "@/lib/google-reviews";
 import { buildPageGraph, buildServiceSchema } from "@/lib/site-schema";
 
 const BRAND = "#7E9146";
@@ -105,6 +106,11 @@ export default async function CityServicePage({ params }: { params: Params }) {
 
   const related = getRelatedServices(service);
   const near = nearbyCities(city, 6);
+  const { meta } = await getDisplayedGoogleReviews();
+  const reviewBlurb =
+    meta.rating > 0 && meta.reviewCount > 0
+      ? `${meta.rating.toFixed(1)} stars across ${meta.reviewCount}+ Google reviews — read them before you book.`
+      : "Read our Google reviews before you book.";
 
   return (
     <>
@@ -214,7 +220,7 @@ export default async function CityServicePage({ params }: { params: Params }) {
               { n: "03", t: "Transparent Pricing", d: "We accept self-pay and most insurances and quote real numbers up front." },
               { n: "04", t: "Same-Week Availability", d: `New ${city.name} patients are usually seen within 1–3 business days.` },
               { n: "05", t: "9+ Years In Eugene", d: "Founded in 2017, with thousands of treatments completed across Lane County and beyond." },
-              { n: "06", t: "Real Results, Real People", d: "4.3 stars across 98+ Google reviews — read them before you book." },
+              { n: "06", t: "Real Results, Real People", d: reviewBlurb },
             ].map((c) => (
               <Reveal key={c.n}>
                 <div className="group relative h-full overflow-hidden rounded-2xl bg-white/5 p-7 ring-1 ring-white/10 transition-all hover:bg-white/10 hover:ring-[#7E9146]/40">

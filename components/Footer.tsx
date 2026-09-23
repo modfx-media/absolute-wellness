@@ -29,6 +29,7 @@ const QUICK_LINKS = [
   { label: "New Patients", href: "/new-patients/" },
   { label: "Appointments", href: "/appointments/" },
   { label: "Blog", href: "/blog/" },
+  { label: "Reviews", href: "/reviews/" },
   { label: "Areas We Serve", href: "/areas/" },
   { label: "Contact", href: "/contact/" },
   { label: "Sitemap", href: "/sitemap/" },

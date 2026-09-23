@@ -28,6 +28,7 @@ const ROUTES = [
   "/pain-relief/",
   "/physical-therapy/",
   "/privacy-policy/",
+  "/reviews/",
   "/services/",
   "/shoulder-pain/",
   "/sitemap/",
