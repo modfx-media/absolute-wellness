@@ -227,9 +227,23 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-6 text-sm sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-gray-400">
-            © {year} Absolute Wellness Center. All rights reserved.
-          </p>
+          <div className="flex flex-col gap-1">
+            <p className="text-gray-400">
+              © {year} Absolute Wellness Center. All rights reserved.
+            </p>
+            <p className="text-gray-400">
+              POWERED BY{" "}
+              <a
+                href="https://modfxmedia.com"
+                target="_blank"
+                rel="noreferrer noopener"
+                className="font-semibold hover:text-white"
+                style={{ color: BRAND }}
+              >
+                MODFXMEDIA
+              </a>
+            </p>
+          </div>
           <div className="flex items-center gap-3">
             <a
               href="https://www.facebook.com/AbsoluteWellnessCenter"
