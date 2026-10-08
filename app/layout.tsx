@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Raleway, Lato } from "next/font/google";
+import localFont from "next/font/local";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
 import "./globals.css";
@@ -13,16 +13,31 @@ import {
   reviewJsonLd,
 } from "@/lib/site-schema";
 
-const raleway = Raleway({
-  subsets: ["latin"],
-  weight: ["600", "700", "800", "900"],
+const raleway = localFont({
+  src: "./fonts/raleway-latin-wght-normal.woff2",
   variable: "--font-raleway",
+  weight: "100 900",
   display: "swap",
 });
 
-const lato = Lato({
-  subsets: ["latin"],
-  weight: ["400", "700", "900"],
+const lato = localFont({
+  src: [
+    {
+      path: "./fonts/lato-latin-400-normal.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/lato-latin-700-normal.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "./fonts/lato-latin-900-normal.woff2",
+      weight: "900",
+      style: "normal",
+    },
+  ],
   variable: "--font-lato",
   display: "swap",
 });
