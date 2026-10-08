@@ -37,11 +37,11 @@ export async function generateMetadata({
   const image = coverAbsoluteUrl(post.cover, SITE);
 
   return {
-    title: `${post.title} | Absolute Wellness Center`,
+    title: post.metaTitle ?? `${post.title} | Absolute Wellness Center`,
     description: post.description,
     alternates: { canonical: url },
     openGraph: {
-      title: post.title,
+      title: post.metaTitle ?? post.title,
       description: post.description,
       url,
       siteName: "Absolute Wellness Center",
@@ -55,7 +55,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: post.title,
+      title: post.metaTitle ?? post.title,
       description: post.description,
       images: [image],
     },
