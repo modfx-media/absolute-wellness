@@ -59,6 +59,252 @@ export type BlogPost = {
 
 export const POSTS: BlogPost[] = [
   {
+    slug: "signs-you-need-a-back-pain-doctor-in-eugene",
+    title: "Signs You Need a Back Pain Doctor in Eugene",
+    metaTitle: "Signs You Need a Back Pain Doctor in Eugene",
+    description:
+      "Learn when self care is not enough and it's time to see a back pain doctor in Eugene for non surgical relief and lasting recovery options",
+    category: "Chiropractic",
+    tags: [
+      "Back Pain",
+      "Chiropractic",
+      "Non-Surgical Care",
+      "Eugene, OR",
+    ],
+    author: "Absolute Wellness Center",
+    authorRole: "Care Team",
+    publishedAt: "2026-10-13",
+    readMinutes: 8,
+    cover: "/images/blogs-images/signs-you-need-a-back-pain-doctor-in-eugene.jpg",
+    coverAlt:
+      "A man sits on the edge of his bed at dawn holding his lower back in pain after a restless night, with an ice pack on the nightstand.",
+    excerpt:
+      "Back pain after a busy day is common. A long drive on I-5, a few hours of yard work, or a weekend game can leave your back tired and tight. That kind of soreness usually eases up in a few days with rest and simple care. The trouble starts when the pain hangs on, gets sharper, or begins to control what you can and cannot do.",
+    featured: true,
+    relatedSlugs: [
+      "joint-friendly-glp-1-weight-loss-options-in-eugene",
+      "stay-active-outdoors-with-glp-1-support-in-eugene",
+      "ozempic-alternatives-for-eugene-athletes-and-lifters",
+    ],
+    content: [
+      {
+        type: "heading",
+        level: 2,
+        text: "When DIY Back Pain Fixes Are No Longer Enough",
+      },
+      {
+        type: "paragraph",
+        text: "Back pain after a busy day is common. A long drive on I-5, a few hours of yard work, or a weekend game can leave your back tired and tight. That kind of soreness usually eases up in a few days with rest and simple care. The trouble starts when the pain hangs on, gets sharper, or begins to control what you can and cannot do.",
+      },
+      {
+        type: "paragraph",
+        text: "There is a big difference between “I am a little sore” and “I cannot sit, sleep, or move without sharp pain.” When we keep pushing through pain, we often change the way we move. That can strain other joints, stress the spine, and turn a small issue into a long-term problem. Over time, back pain can interrupt sleep, limit work, and make it hard to enjoy favorite activities around Eugene.",
+      },
+      {
+        type: "paragraph",
+        text: "At that point, ice packs, stretching videos, and quick trips to the drugstore are not enough. A back pain doctor in Eugene can look past the surface and find out what is truly going on, then build a plan that actually fits your body and your life.",
+      },
+
+      {
+        type: "heading",
+        level: 2,
+        text: "Red-Flag Back Pain That You Should Never Ignore",
+      },
+      {
+        type: "paragraph",
+        text: "Some back pain is annoying but not dangerous. Other symptoms are clear warning signs that you need prompt medical attention from a trained provider.",
+      },
+      {
+        type: "paragraph",
+        text: "Get checked right away if you notice:",
+      },
+      {
+        type: "list",
+        items: [
+          "Back pain after a fall, sports impact, or car crash",
+          "Pain that is so strong it wakes you up or keeps you from finding any position of comfort",
+          "Sudden weakness in a leg or foot, or trouble walking normally",
+          "Loss of bowel or bladder control, or trouble starting or stopping urine",
+          "Numbness or tingling in the groin area or running down the legs",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "There are also quieter signs that still matter:",
+      },
+      {
+        type: "list",
+        items: [
+          "Back pain that lasts longer than 2 to 3 weeks without real improvement",
+          "Pain that keeps getting worse instead of easing up",
+          "Back pain along with fever or chills",
+          "Unexplained weight loss",
+          "A history of cancer along with new, stubborn back pain",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "These are not problems to watch on your own or try to fix with a heating pad and online advice. Getting in to see a back pain doctor in Eugene quickly can help catch serious issues early and lower the risk of long-term nerve damage or other lasting problems.",
+      },
+
+      {
+        type: "heading",
+        level: 2,
+        text: "When Self-Care Helps and When It Holds You Back",
+      },
+      {
+        type: "paragraph",
+        text: "For mild, short-term back pain, simple self-care can be reasonable. Many people with a small muscle strain feel better with:",
+      },
+      {
+        type: "list",
+        items: [
+          "A short period of rest from heavy lifting or twisting",
+          "Gentle, frequent movement like light walking",
+          "Careful use of heat or ice for comfort",
+          "Over-the-counter pain relievers taken only as directed by the label or another provider",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "The trouble comes when self-care turns into self-treatment without a clear plan. That can look like:",
+      },
+      {
+        type: "list",
+        items: [
+          "Taking pain pills every day just to get through work or sleep",
+          "Wearing a back brace most of the time so your muscles never engage",
+          "Following random exercise videos that are not chosen for your exact issue",
+          "Pushing into sharp pain because you think “no pain, no gain” always applies",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "A few general timelines can help you decide what to do next:",
+      },
+      {
+        type: "list",
+        items: [
+          "If pain is mild and slowly improving over several days, careful watching may be okay.",
+          "If pain has not started to ease within 1 to 2 weeks, it is time to get it checked.",
+          "If pain is strong from the start, makes daily tasks very hard, or keeps coming back again and again, stop guessing and get a professional evaluation.",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "You should not have to rely on pills, braces, or guessing games to get through a normal day.",
+      },
+
+      {
+        type: "heading",
+        level: 2,
+        text: "How a Back Pain Doctor in Eugene Finds the Real Cause",
+      },
+      {
+        type: "paragraph",
+        text: "When you see a back pain doctor, the goal is to find the true source of the problem, not just quiet the symptoms. At Absolute Wellness Center, that starts with a careful, face-to-face visit.",
+      },
+      {
+        type: "paragraph",
+        text: "You can expect:",
+      },
+      {
+        type: "list",
+        items: [
+          "A detailed talk about your health history and current symptoms",
+          "A focused physical and neurological exam",
+          "A look at your posture, gait, and how you bend, twist, and lift",
+          "Imaging, such as X-rays or other studies, when they are needed to guide care",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Back pain can come from many different structures, including:",
+      },
+      {
+        type: "list",
+        items: [
+          "Muscles or ligaments, such as strains or small tears",
+          "Discs between the vertebrae",
+          "Joints in the spine related to arthritis",
+          "Narrowing around the nerves, called spinal stenosis",
+          "Direct irritation or compression of a nerve root",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Each of these problems needs a different approach. A back pain doctor in Eugene works to sort out which tissues are involved so your treatment is based on what is actually wrong, not just on a guess. Being local also helps us understand common strains we see from outdoor projects, walking trails, and everyday commuting patterns around our area.",
+      },
+
+      {
+        type: "heading",
+        level: 2,
+        text: "Non-Surgical Options That Help You Avoid the Operating Room",
+      },
+      {
+        type: "paragraph",
+        text: "Many people fear that back pain will lead straight to surgery. Often, that is not the case. At Absolute Wellness Center, we focus on non-surgical options that are designed to support the body’s natural healing process and improve function.",
+      },
+      {
+        type: "paragraph",
+        text: "Depending on your evaluation, your plan may include:",
+      },
+      {
+        type: "list",
+        items: [
+          "Chiropractic care to improve joint motion and alignment",
+          "Regenerative medicine therapies that are intended to support tissue repair",
+          "Targeted therapeutic exercises to build strength, control, and flexibility",
+          "Soft tissue treatments for tight, overworked muscles and fascia",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "These methods aim to calm irritation, reduce strain on sensitive joints and nerves, and help your spine move in a healthier way. For many patients, a focused non-surgical plan can reduce pain, improve daily function, and help delay or avoid surgical options.",
+      },
+      {
+        type: "paragraph",
+        text: "We may also suggest supportive services that work alongside your main care plan, such as:",
+      },
+      {
+        type: "list",
+        items: [
+          "IV therapy to support recovery and overall energy",
+          "Medically guided weight management to reduce extra load on the spine",
+          "Lifestyle and movement coaching to help prevent repeat flare-ups",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "The goal is not just short-term relief, but long-term support so you can get back to living, not just managing symptoms.",
+      },
+
+      {
+        type: "heading",
+        level: 2,
+        text: "Getting Back to Fall Activities Starts with One Step",
+      },
+      {
+        type: "paragraph",
+        text: "When your back hurts, it is easy to put things off. You may tell yourself you will deal with it after the yard is done, after the sports season, or after the holidays. The problem is that pain rarely waits politely. It tends to grow, spread, and show up in more parts of your life.",
+      },
+      {
+        type: "paragraph",
+        text: "You do not need a perfect plan before you see a back pain doctor in Eugene. You only need to be honest that what you are doing now is not working the way you hoped. From there, a proper evaluation at Absolute Wellness Center can help you sort out which symptoms are red flags, what is causing your pain, and which non-surgical options may give you a clearer path back to the activities you enjoy.",
+      },
+
+      {
+        type: "heading",
+        level: 2,
+        text: "Start Relieving Your Back Pain With Expert Care Today",
+      },
+      {
+        type: "paragraph",
+        text: "If back pain is keeping you from work, family, or the activities you enjoy, we are here to help you move forward with confidence. At Absolute Wellness Center, our back pain doctor in Eugene will work with you to identify the root cause of your pain and create a treatment plan tailored to your goals. We take the time to listen, explain your options, and support you at every step. Ready to schedule an appointment or ask a question? Simply contact us and our team will follow up promptly.",
+      },
+    ],
+  },
+  {
     slug: "glp-1-weight-loss-for-men-in-eugene",
     title: "Reboot Your Metabolism Before the Holiday Season Hits",
     metaTitle: "GLP-1 Weight Loss for Men in Eugene: A Guide",
