@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { CITIES, SERVICES } from "@/lib/areas";
+import { BLOG_IS_PUBLIC } from "@/lib/blog-visibility";
 import { getPublishedSitePosts } from "@/lib/ranked/to-site-post";
 
 const ROUTES = [
@@ -12,7 +13,6 @@ const ROUTES = [
   "/auto-injury/",
   "/back-pain/",
   "/bioidentical-hormones/",
-  "/blog/",
   "/chiropractic-care/",
   "/conditions/",
   "/contact/",
@@ -45,7 +45,7 @@ const PRIMARY_PAGES = new Set([
   "/appointments/",
   "/new-patients/",
   "/areas/",
-  "/blog/",
+  ...(BLOG_IS_PUBLIC ? ["/blog/"] : []),
   "/chiropractic-care/",
   "/nutritional-ivs/",
   "/medical-weight-loss/",
@@ -54,9 +54,14 @@ const PRIMARY_PAGES = new Set([
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = "https://awceugene.com";
   const now = new Date();
-  const publishedPosts = await getPublishedSitePosts().catch(() => []);
+  const publishedPosts = BLOG_IS_PUBLIC
+    ? await getPublishedSitePosts().catch(() => [])
+    : [];
 
-  const core = ROUTES.map((path) => ({
+  const core = [
+    ...ROUTES,
+    ...(BLOG_IS_PUBLIC ? ["/blog/"] : []),
+  ].map((path) => ({
     url: `${base}${path}`,
     lastModified: now,
     changeFrequency: "monthly" as const,

@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/home/Reveal";
 import { Icons, SectionPill } from "@/components/home/ui";
 import { type BlogPost, formatDate } from "@/lib/blog";
+import { BLOG_IS_PUBLIC } from "@/lib/blog-visibility";
 import { coverAbsoluteUrl, getPublishedSitePosts } from "@/lib/ranked/to-site-post";
 import { buildPageGraph, SITE_URL } from "@/lib/site-schema";
 
@@ -29,17 +31,19 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1,
-    },
-  },
+  robots: BLOG_IS_PUBLIC
+    ? {
+        index: true,
+        follow: true,
+        googleBot: {
+          index: true,
+          follow: true,
+          "max-image-preview": "large",
+          "max-snippet": -1,
+          "max-video-preview": -1,
+        },
+      }
+    : { index: false, follow: false },
 };
 
 const pageSchema = buildPageGraph({
@@ -79,6 +83,8 @@ export default async function BlogIndexPage({
 }: {
   searchParams: Promise<{ category?: string | string[] }>;
 }) {
+  if (!BLOG_IS_PUBLIC) notFound();
+
   const { category: categoryParam } = await searchParams;
   const rawCategory = Array.isArray(categoryParam) ? categoryParam[0] : categoryParam;
 

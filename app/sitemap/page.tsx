@@ -5,6 +5,7 @@ import Reveal from "@/components/home/Reveal";
 import { Icons, SectionPill } from "@/components/home/ui";
 import { buildPageGraph } from "@/lib/site-schema";
 import { CITIES, SERVICES } from "@/lib/areas";
+import { BLOG_IS_PUBLIC } from "@/lib/blog-visibility";
 
 const TITLE = "Sitemap in Eugene, OR | Absolute Wellness Center";
 const DESCRIPTION = "Sitemap -";
@@ -56,7 +57,7 @@ const PAGES: SitemapItem[] = [
   { label: "Auto Injury", href: "/auto-injury/" },
   { label: "Back Pain", href: "/back-pain/" },
   { label: "Bioidentical Hormones", href: "/bioidentical-hormones/" },
-  { label: "Blog", href: "/blog/" },
+  ...(BLOG_IS_PUBLIC ? [{ label: "Blog", href: "/blog/" }] : []),
   { label: "Chiropractic Care", href: "/chiropractic-care/" },
   { label: "Conditions", href: "/conditions/" },
   { label: "Contact", href: "/contact/" },

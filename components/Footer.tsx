@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { BLOG_IS_PUBLIC } from "@/lib/blog-visibility";
 
 const BRAND = "#7E9146";
 
@@ -28,7 +29,7 @@ const QUICK_LINKS = [
   { label: "About Us", href: "/about/" },
   { label: "New Patients", href: "/new-patients/" },
   { label: "Appointments", href: "/appointments/" },
-  { label: "Blog", href: "/blog/" },
+  ...(BLOG_IS_PUBLIC ? [{ label: "Blog", href: "/blog/" }] : []),
   { label: "Reviews", href: "/reviews/" },
   { label: "Areas We Serve", href: "/areas/" },
   { label: "Contact", href: "/contact/" },

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { BLOG_IS_PUBLIC } from "@/lib/blog-visibility";
 
 type NavChild = { label: string; href: string };
 type NavItem = { label: string; href: string; children?: NavChild[] };
@@ -35,7 +36,7 @@ const CONDITIONS: NavChild[] = [
 
 const ABOUT: NavChild[] = [
   { label: "About Us", href: "/about/" },
-  { label: "Blog", href: "/blog/" },
+  ...(BLOG_IS_PUBLIC ? [{ label: "Blog", href: "/blog/" }] : []),
 ];
 
 const NAV: NavItem[] = [

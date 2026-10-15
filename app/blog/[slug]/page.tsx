@@ -7,6 +7,7 @@ import { DotPattern } from "@/components/home/decor";
 import { Icons } from "@/components/home/ui";
 import { SITE_URL, buildPageGraph } from "@/lib/site-schema";
 import { type BlogBlock, type BlogPost, formatDate, getRelatedPosts } from "@/lib/blog";
+import { BLOG_IS_PUBLIC } from "@/lib/blog-visibility";
 import { linkifyRichText } from "@/lib/linkify-rich-text";
 import { getPublishedBlogSlugs } from "@/lib/ranked/posts";
 import { coverAbsoluteUrl, getPublishedSitePost, getPublishedSitePosts } from "@/lib/ranked/to-site-post";
@@ -20,6 +21,7 @@ export const revalidate = 3600;
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
+  if (!BLOG_IS_PUBLIC) return [];
   const slugs = await getPublishedBlogSlugs().catch(() => []);
   return slugs.map((slug) => ({ slug }));
 }
@@ -30,6 +32,7 @@ export async function generateMetadata({
   params: Params;
 }): Promise<Metadata> {
   const { slug } = await params;
+  if (!BLOG_IS_PUBLIC) return { robots: { index: false, follow: false } };
   const post = await getPublishedSitePost(slug);
   if (!post) return {};
 
@@ -251,6 +254,7 @@ function articleSchema(post: BlogPost) {
 
 export default async function BlogPostPage({ params }: { params: Params }) {
   const { slug } = await params;
+  if (!BLOG_IS_PUBLIC) notFound();
   const post = await getPublishedSitePost(slug);
   if (!post) notFound();
 
