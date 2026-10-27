@@ -250,8 +250,7 @@ export default function ContactPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Absolute Wellness Center on Facebook"
-                    className="inline-flex h-11 w-11 items-center justify-center rounded-full transition-all hover:bg-[#7E9146] hover:text-white"
-                    style={{ backgroundColor: "rgba(126,145,70,0.10)", color: BRAND }}
+                    className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#7E9146]/10 text-[#7E9146] transition-all hover:bg-[#7E9146] hover:text-white"
                   >
                     <FacebookIcon cls="h-5 w-5" />
                   </a>
@@ -260,8 +259,7 @@ export default function ContactPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Absolute Wellness Center on Google Maps"
-                    className="inline-flex h-11 w-11 items-center justify-center rounded-full transition-all hover:bg-[#7E9146] hover:text-white"
-                    style={{ backgroundColor: "rgba(126,145,70,0.10)", color: BRAND }}
+                    className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#7E9146]/10 text-[#7E9146] transition-all hover:bg-[#7E9146] hover:text-white"
                   >
                     {Icons.pin("h-5 w-5")}
                   </a>

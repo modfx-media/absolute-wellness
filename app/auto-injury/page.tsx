@@ -185,8 +185,7 @@ function ScheduleCard() {
                 </a>
                 <Link
                   href="/appointments/"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border-2 px-7 py-5 font-[family-name:var(--font-raleway)] text-base font-black transition-colors hover:bg-[#7E9146] hover:text-white"
-                  style={{ borderColor: BRAND, color: BRAND }}
+                  className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#7E9146] px-7 py-5 font-[family-name:var(--font-raleway)] text-base font-black text-[#7E9146] transition-colors hover:bg-[#7E9146] hover:text-white"
                 >
                   Book Online
                   {Icons.arrow("h-5 w-5")}
@@ -245,8 +244,7 @@ function StickyMobileCallBar() {
         </a>
         <Link
           href="/appointments/"
-          className="flex flex-1 items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-black border-2 transition-colors"
-          style={{ borderColor: BRAND, color: BRAND, backgroundColor: "white" }}
+          className="flex flex-1 items-center justify-center gap-2 rounded-full border-2 border-[#7E9146] bg-white px-4 py-3 text-sm font-black text-[#7E9146] transition-colors hover:bg-[#7E9146] hover:text-white"
         >
           {Icons.calendar("h-4 w-4")}
           Book Today

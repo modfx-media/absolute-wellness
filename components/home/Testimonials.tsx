@@ -121,8 +121,7 @@ export default function Testimonials({
               href={reviewsUrl}
               target="_blank"
               rel="noreferrer noopener"
-              className="inline-flex items-center gap-2 rounded-full border-2 px-8 py-3.5 font-[family-name:var(--font-raleway)] text-sm font-bold transition-all hover:bg-[#7E9146] hover:text-white"
-              style={{ borderColor: BRAND, color: BRAND }}
+              className="inline-flex items-center gap-2 rounded-full border-2 border-[#7E9146] px-8 py-3.5 font-[family-name:var(--font-raleway)] text-sm font-bold text-[#7E9146] transition-all hover:bg-[#7E9146] hover:text-white"
             >
               View all Google reviews →
             </a>

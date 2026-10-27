@@ -158,8 +158,7 @@ export default function AboutPage() {
                   </Link>
                   <a
                     href="tel:+15414845777"
-                    className="inline-flex items-center gap-2 rounded-full border-2 px-8 py-4 font-[family-name:var(--font-raleway)] text-sm font-bold transition-colors hover:bg-[#7E9146] hover:text-white"
-                    style={{ borderColor: BRAND, color: BRAND }}
+                    className="inline-flex items-center gap-2 rounded-full border-2 border-[#7E9146] px-8 py-4 font-[family-name:var(--font-raleway)] text-sm font-bold text-[#7E9146] transition-colors hover:bg-[#7E9146] hover:text-white"
                   >
                     {Icons.phone("h-4 w-4")}
                     (541) 484-5777

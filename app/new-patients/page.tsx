@@ -161,8 +161,7 @@ export default function NewPatientsPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     download
-                    className="inline-flex items-center gap-2 rounded-full border-2 px-7 py-3.5 font-[family-name:var(--font-raleway)] text-sm font-bold transition-colors hover:bg-[#7E9146] hover:text-white"
-                    style={{ borderColor: BRAND, color: BRAND }}
+                    className="inline-flex items-center gap-2 rounded-full border-2 border-[#7E9146] px-7 py-3.5 font-[family-name:var(--font-raleway)] text-sm font-bold text-[#7E9146] transition-colors hover:bg-[#7E9146] hover:text-white"
                   >
                     <DownloadIcon cls="h-4 w-4" />
                     Download Form
