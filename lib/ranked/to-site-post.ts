@@ -1,3 +1,4 @@
+import { getPayloadDraftPost, getPublishedPayloadPosts } from '@/lib/cms/posts'
 import {
   getPost,
   type BlogBlock,
@@ -5,6 +6,11 @@ import {
 } from '@/lib/blog'
 import { getPublishedBlogPost, getPublishedBlogPosts } from '@/lib/ranked/posts'
 import type { BlogPostData } from '@/lib/ranked/types'
+
+function isFutureDated(iso: string, now = Date.now()): boolean {
+  const time = Date.parse(iso.length <= 10 ? `${iso}T23:59:59.999Z` : iso)
+  return !Number.isNaN(time) && time > now
+}
 
 function wordCount(data: BlogPostData): number {
   const parts = [data.intro, ...data.sections.flatMap((s) => [s.heading, ...s.body])]
@@ -63,14 +69,40 @@ export function toSiteBlogPost(data: BlogPostData): BlogPost {
   return rankedToBlogPost(data)
 }
 
-export async function getPublishedSitePosts(): Promise<BlogPost[]> {
-  const posts = await getPublishedBlogPosts()
-  return posts.map(toSiteBlogPost)
+function mergeBySlug(fallback: BlogPost[], cms: BlogPost[]): BlogPost[] {
+  const bySlug = new Map<string, BlogPost>()
+  for (const post of fallback) {
+    if (!isFutureDated(post.publishedAt)) bySlug.set(post.slug, post)
+  }
+  for (const post of cms) {
+    if (!isFutureDated(post.publishedAt)) bySlug.set(post.slug, post)
+  }
+  return [...bySlug.values()].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
 }
 
-export async function getPublishedSitePost(slug: string): Promise<BlogPost | undefined> {
-  const post = await getPublishedBlogPost(slug)
-  return post ? toSiteBlogPost(post) : undefined
+export async function getPublishedSitePosts(): Promise<BlogPost[]> {
+  const posts = await getPublishedBlogPosts()
+  const fallback = posts.map(toSiteBlogPost)
+  const cms = await getPublishedPayloadPosts()
+  return mergeBySlug(fallback, cms)
+}
+
+export async function getPublishedSitePost(
+  slug: string,
+  opts?: { draft?: boolean },
+): Promise<BlogPost | undefined> {
+  if (opts?.draft) {
+    const draftPost = await getPayloadDraftPost(slug)
+    if (draftPost) return draftPost
+  }
+  const posts = await getPublishedSitePosts()
+  if (posts.some((post) => post.slug === slug)) {
+    return posts.find((post) => post.slug === slug)
+  }
+  const ranked = await getPublishedBlogPost(slug)
+  if (!ranked) return undefined
+  const post = toSiteBlogPost(ranked)
+  return isFutureDated(post.publishedAt) ? undefined : post
 }
 
 export function coverAbsoluteUrl(cover: string, site: string): string {

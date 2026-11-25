@@ -55,6 +55,10 @@ export type BlogPost = {
   content: BlogBlock[];
   featured?: boolean;
   relatedSlugs?: string[];
+  /** Payload SEO. Hard-coded posts leave these unset. */
+  canonicalUrl?: string;
+  noIndex?: boolean;
+  excludeFromSitemap?: boolean;
 };
 
 export const POSTS: BlogPost[] = [
