@@ -10,7 +10,7 @@ import { BLOG_IS_PUBLIC } from "@/lib/blog-visibility";
 import { coverAbsoluteUrl, getPublishedSitePosts } from "@/lib/ranked/to-site-post";
 import { buildPageGraph, SITE_URL } from "@/lib/site-schema";
 
-export const revalidate = 3600;
+export const revalidate = 300;
 
 const BRAND = "#7E9146";
 

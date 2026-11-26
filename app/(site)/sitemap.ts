@@ -1,4 +1,6 @@
 import type { MetadataRoute } from "next";
+
+export const revalidate = 300;
 import { CITIES, SERVICES } from "@/lib/areas";
 import { BLOG_IS_PUBLIC } from "@/lib/blog-visibility";
 import { getPublishedSitePosts } from "@/lib/ranked/to-site-post";
@@ -55,7 +57,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = "https://awceugene.com";
   const now = new Date();
   const publishedPosts = BLOG_IS_PUBLIC
-    ? await getPublishedSitePosts().catch(() => [])
+    ? (await getPublishedSitePosts().catch(() => [])).filter(
+        (post) => !post.noIndex && !post.excludeFromSitemap,
+      )
     : [];
 
   const core = [

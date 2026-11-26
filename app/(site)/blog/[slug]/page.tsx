@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 import Reveal from "@/components/home/Reveal";
 import { DotPattern } from "@/components/home/decor";
@@ -9,7 +10,6 @@ import { SITE_URL, buildPageGraph } from "@/lib/site-schema";
 import { type BlogBlock, type BlogPost, formatDate, getRelatedPosts } from "@/lib/blog";
 import { BLOG_IS_PUBLIC } from "@/lib/blog-visibility";
 import { linkifyRichText } from "@/lib/linkify-rich-text";
-import { getPublishedBlogSlugs } from "@/lib/ranked/posts";
 import { coverAbsoluteUrl, getPublishedSitePost, getPublishedSitePosts } from "@/lib/ranked/to-site-post";
 
 const BRAND = "#7E9146";
@@ -17,13 +17,13 @@ const SITE = "https://awceugene.com";
 
 type Params = Promise<{ slug: string }>;
 
-export const revalidate = 3600;
+export const revalidate = 300;
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
   if (!BLOG_IS_PUBLIC) return [];
-  const slugs = await getPublishedBlogSlugs().catch(() => []);
-  return slugs.map((slug) => ({ slug }));
+  const posts = await getPublishedSitePosts().catch(() => []);
+  return posts.map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({
@@ -33,16 +33,18 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   if (!BLOG_IS_PUBLIC) return { robots: { index: false, follow: false } };
-  const post = await getPublishedSitePost(slug);
+  const { isEnabled } = await draftMode();
+  const post = await getPublishedSitePost(slug, { draft: isEnabled });
   if (!post) return {};
 
   const url = `${SITE}/blog/${post.slug}/`;
+  const canonical = post.canonicalUrl || url;
   const image = coverAbsoluteUrl(post.cover, SITE);
 
   return {
     title: post.metaTitle ?? `${post.title} | Absolute Wellness Center`,
     description: post.description,
-    alternates: { canonical: url },
+    alternates: { canonical },
     openGraph: {
       title: post.metaTitle ?? post.title,
       description: post.description,
@@ -62,16 +64,18 @@ export async function generateMetadata({
       description: post.description,
       images: [image],
     },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-      },
-    },
+    robots: post.noIndex
+      ? { index: false, follow: false }
+      : {
+          index: true,
+          follow: true,
+          googleBot: {
+            index: true,
+            follow: true,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+          },
+        },
   };
 }
 
@@ -255,7 +259,8 @@ function articleSchema(post: BlogPost) {
 export default async function BlogPostPage({ params }: { params: Params }) {
   const { slug } = await params;
   if (!BLOG_IS_PUBLIC) notFound();
-  const post = await getPublishedSitePost(slug);
+  const { isEnabled } = await draftMode();
+  const post = await getPublishedSitePost(slug, { draft: isEnabled });
   if (!post) notFound();
 
   const url = `${SITE}/blog/${post.slug}/`;
